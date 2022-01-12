@@ -3,10 +3,10 @@ package com.niranjan.android.laharisahitya.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -20,6 +20,7 @@ import com.niranjan.android.laharisahitya.activity.home.HomeActivity
 import com.niranjan.android.laharisahitya.model.Gender
 import com.niranjan.android.laharisahitya.model.User
 import kotlinx.android.synthetic.main.activity_registration.*
+
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -87,6 +88,24 @@ class RegistrationActivity : AppCompatActivity() {
       }
     }
 
+    tvFirstName.editText?.onFocusChangeListener = focusChangeListener
+    tvLastName.editText?.onFocusChangeListener = focusChangeListener
+    tvGender.editText?.onFocusChangeListener = focusChangeListener
+    tvDob.editText?.onFocusChangeListener = focusChangeListener
+    tvPhone.editText?.onFocusChangeListener = focusChangeListener
+    tvCity.editText?.onFocusChangeListener = focusChangeListener
+    tvOccupation.editText?.onFocusChangeListener = focusChangeListener
+
+  }
+
+  private val focusChangeListener = OnFocusChangeListener { view, hasFocus ->
+    if (!hasFocus) {
+      if ((view as EditText).toString().isBlank()) {
+        view.error = null
+      } else {
+        view.error = "This field is required"
+      }
+    }
   }
 
 
@@ -212,13 +231,8 @@ class RegistrationActivity : AppCompatActivity() {
         }
         .setPositiveButton("Continue Registration") { dialog, which ->
           dialog.dismiss()
+          finish()
         }
         .show()
   }
 }
-
-
-
-
-
-

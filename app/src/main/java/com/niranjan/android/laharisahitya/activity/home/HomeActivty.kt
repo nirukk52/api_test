@@ -2,6 +2,7 @@ package com.niranjan.android.laharisahitya.activity.home
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.View
@@ -11,14 +12,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.niranjan.android.laharisahitya.R
 import com.niranjan.android.laharisahitya.Utils.*
-import com.niranjan.android.laharisahitya.activity.SplashActivity
 import com.niranjan.android.laharisahitya.activity.login.LoginActivity
 import com.niranjan.android.laharisahitya.model.*
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 /**
@@ -81,6 +80,11 @@ class HomeActivity : AppCompatActivity() {
 //                startActivity(LoginActivity.newIntent(context!!))
 //            }
 //        }
+
+        cvWebsite.setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://santlaharinath.org/"))
+            startActivity(browserIntent)
+        }
     }
 
     private fun initAdapter(mainList: ArrayList<Category>) {

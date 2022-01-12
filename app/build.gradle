@@ -11,15 +11,15 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         multiDexEnabled true
-        versionCode 3
-        versionName "0.1"
+        versionCode 4
+        versionName "4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         release {
             keyAlias 'niranjan__key'
             keyPassword 'ranchordas'
-            storeFile file('/media/niranjan/1810A137752241A7/Files/keystore/niranjan_key.jks')
+            storeFile file('/Users/nkurambhatti/Documents/keys/ashram_key.jks')
             storePassword 'ranchordas'
         }
     }
@@ -77,6 +77,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
     implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
     implementation 'com.firebaseui:firebase-ui-firestore:4.2.1'
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    // Declare the dependency for the Analytics library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     implementation 'org.koin:koin-android:1.0.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'

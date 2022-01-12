@@ -18,5 +18,10 @@ object AppConstants {
         val postId = "postId"
         val query = "query"
         val collection = "collection"
+
+
+        val imageUrlOne = "imageUrlOne"
+        val imageUrlTwo = "imageUrlTwo"
+        val imageUrlThree = "imageUrlThree"
     }
 }
