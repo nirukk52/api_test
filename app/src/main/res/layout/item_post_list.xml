@@ -1,0 +1,77 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_list_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:id="@+id/ivPostIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/hindimedium"
+            android:maxLines="2"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivPostIcon"
+            app:layout_constraintEnd_toStartOf="@id/ivNext"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@id/ivPostIcon"
+            app:layout_constraintTop_toTopOf="@id/ivPostIcon"
+            tools:text="|| Long Text Name||" />
+
+
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/next"
+            app:layout_constraintBottom_toBottomOf="@id/ivPostIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="@id/ivPostIcon" />
+
+        <TextView
+            android:id="@+id/tv_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hindireg"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="100.00" />
+
+        <View
+            android:id="@+id/v"
+            android:layout_width="wrap_content"
+            android:layout_height="1px"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintStart_toEndOf="@id/ivPostIcon"
+            app:layout_constraintTop_toBottomOf="@id/ivPostIcon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

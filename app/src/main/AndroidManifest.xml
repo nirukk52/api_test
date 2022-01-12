@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  package="com.niranjan.android.laharisahitya">
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+  <application
+    android:name="com.niranjan.android.laharisahitya.activity.MyApplication"
+    android:allowBackup="false"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme"
+    tools:ignore="GoogleAppIndexingWarning"
+    tools:replace="android:allowBackup">
+
+    <activity android:name=".activity.home.HomeActivity" />
+    <activity
+      android:name=".activity.RegistrationActivity"
+      android:noHistory="true" />
+
+    <activity
+      android:name=".activity.login.LoginActivity"
+      android:noHistory="true"
+      android:theme="@style/LoginStyle" />
+
+    <activity
+      android:name=".activity.SplashActivity"
+      android:theme="@style/Theme.App.Starting"
+      android:noHistory="true"
+      android:exported="true"
+      >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.upload.UploadActivity" />
+
+    <activity android:name=".activity.list.ListActivity">
+
+    </activity>
+    <activity android:name=".activity.details.DetailsActivity" />
+  </application>
+
+</manifest>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/detailRoot"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ScrollView
+    android:id="@+id/scDetail"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@id/jcplayer"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarUp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        app:layout_collapseMode="pin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/colorWhiteBg" />
+
+      <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_detail_bg"
+        android:fontFamily="@font/hindimedium"
+        android:gravity="center"
+        android:maxLines="2"
+        android:padding="2dp"
+        android:textColor="@android:color/black"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarUp"
+        tools:text="@string/title" />
+
+      <LinearLayout
+        android:id="@+id/llTextSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/tvBody"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+        <Button
+          android:id="@+id/btSmall"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Small" />
+
+        <Button
+          android:id="@+id/btMed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/spacing_normal"
+          android:layout_marginEnd="@dimen/spacing_normal"
+          android:text="Medium" />
+
+        <Button
+          android:id="@+id/btLarge"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Large" />
+
+
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/tvBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/ivImage"
+        app:layout_constraintTop_toBottomOf="@id/llTextSize" />
+
+      <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/tvDate"
+        app:layout_constraintTop_toBottomOf="@id/tvBody" />
+
+
+      <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_detail_bg"
+        android:fontFamily="@font/eczarregular"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/ivImage"
+        tools:text="@string/date" />
+
+      <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_detail_bg"
+        android:fontFamily="@font/eczarregular"
+        android:padding="12dp"
+        android:text="Delete"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        tools:text="Delete" />
+
+
+      <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tvDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </ScrollView>
+
+  <com.example.jean.jcplayer.view.JcPlayerView
+    android:id="@+id/jcplayer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorAccent"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

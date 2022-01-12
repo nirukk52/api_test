@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">लहरी\nसाहित्य</string>
+
+    <string name="upload_title">शीर्षक / Title</string>
+    <string name="upload_body">प्रधान भाग / Upload Body</string>
+    <string name="upload">अपलोड  / Upload</string>
+    <string name="upload_file">अपलोड  / Upload File</string>
+    <string name="upload_folder">अपलोड  / Create Folder</string>
+    <string name="upload_image">फोटो अपलोड करें  / Upload Image</string>
+    <string name="upload_audio">गाना अपलोड करें  / Upload Audio</string>
+
+    <string name="jai_lahari">।। जय लहरी\n\t\t\t\t\t\t\tजय मानव ।।</string>
+    <string name="registration_form">Registration Form / रजिस्टर फॉर्म</string>
+    <string name="submit_form">Submit Form / सब्मिट फॉर्म</string>
+
+    // Main List
+    <string name="bhajan">Bhajan</string>
+    <string name="songs">Audio Songs</string>
+    <string name="photos">Photos</string>
+    <string name="prayer">Prarthana</string>
+    <string name="pothi">Pothi</string>
+    <string name="chaliisa">Lahaari Chalisa</string>
+    <string name="aarti">Aarti</string>
+    <string name="recording">Pravachan recording</string>
+    <string name="login">LOGIN / लॉग इन करें</string>
+    <string name="add_folder">Add Folder / *** ** ***</string>
+
+    //tools Text
+    <string name="title">शिव तांडव स्त्रोत्म</string>
+    <string name="body">जततवी गला ज्जाला प्रवाहा पविता स्थले,
+
+डरा दरेन्द्रा नंदिनी विलसा भंधु भंडूरा,
+स्फुरदीगणठा संतति प्रमोढ़ा माना मानसे,
+कृपा कडकषा धोरानी निरुद्धा दुर्धरपदी,
+क्वची दिगंबारे मानो विनोधमेठु वास्तुंी.
+डरा दरेन्द्रा नंदिनी विलसा भंधु भंडूरा,
+
+स्फुरदीगणठा संतति प्रमोढ़ा माना मानसे,
+कृपा कडकषा धोरानी निरुद्धा दुर्धरपदी,
+क्वची दिगंबारे मानो विनोधमेठु वास्तुंी.
+
+जाड़ा भुजनगा पिंगला स्फूरत फ़ना मानी प्रभा,
+कदंबा कुमकुंआ द्राव प्रलीप्ता दिगवधू मुखे,
+मढ़ंधा सिंधुरा स्फूरठवागु उत्तरिया मेधुरे,
+मानो विनोधमड़बूतम बिबरतू भूता भारतरी.</string>
+    <string name="date">November 22, 2018 at 3:44:16 At 5:30</string>
+
+
+    <string name="splash_title">लहरी साहित्य</string>
+    <string name="splash_text">।। जय लहरी  जय मानव ।।</string>
+
+
+    <string name="splash_notice">Please login and register in the app to get access to hundreds of FREE texts, photos and songs related to Lahari Ashram. \n\nलहरी आश्रम से संबंधित सैकड़ों मुफ्त ग्रंथों, तस्वीरों और गीतों तक पहुंच प्राप्त करने के लिए कृपया लॉगिन करें और ऐप में पंजीकरण करें।</string>
+
+    <string name="track_stocks">Track Two Stocks</string>
+    <string name="track_stocks_rv">Track Stocks with RecyclerView</string>
+    <string name="dialog_text">Complete Registration</string>
+  <string name="supporting_text">Complete the registration form to get access to FREE Lahari Pothi, Bhajans, Arti and more!</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#D87635</color>
+    <color name="colorPrimary">#f58b44</color>
+    <color name="colorPrimaryLight">#FFDE76</color>
+    <color name="colorPrimaryExtraLight">#FFD0B0</color>
+    <color name="colorPrimaryCardButton">#C58459</color>
+    <color name="colorPrimaryButtonLight">#9CF58B44</color>
+
+
+    <color name="colorAccent">#f58b44</color>
+
+
+
+    <color name="colorBlueButton">#828dab</color>
+    <color name="colorBlueButtonDark">#828dab</color>
+
+    <color name="colorDarkBlue">#5D657A</color>
+
+
+    <color name="colorWhiteBg">#FFFFFF</color>
+    <color name="colorGreyBg">#DDDBD7</color>
+    <color name="colorWhiteBgPressed">#f58b44</color>
+
+    <color name="colorTrans">#1e000000</color>
+    <!--828dab-->
+    <!--5a6175-->
+</resources>

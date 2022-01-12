@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/colorWhiteBg"
+  android:orientation="vertical"
+  app:layout_constraintVertical_chainStyle="packed">
+
+  <com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/scrollView"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+      android:id="@+id/topAppBar"
+      style="@style/Widget.MaterialComponents.Toolbar.Primary"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      app:navigationIcon="@drawable/ic_baseline_close_24"
+      app:title="@string/registration_form" />
+
+  </com.google.android.material.appbar.AppBarLayout>
+
+  <ScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="16dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    app:layout_constraintBottom_toTopOf="@id/btSubmit"
+    app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvFirstName"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginBottom="8dp"
+          android:layout_weight="4"
+          android:hint="First Name*"
+
+          android:nextFocusRight="@id/tvLastName"
+          app:errorContentDescription="This field is required"
+          app:helperText="Required">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvLastName"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:layout_weight="6"
+
+          android:hint="Last Name*"
+          app:errorContentDescription="This field is required"
+          app:helperText="Required">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+
+            android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvGender"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_weight="4"
+          android:hint="Gender*"
+          app:errorContentDescription="This field is required"
+          app:helperText="Required">
+
+          <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvDob"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:layout_weight="6"
+
+          android:hint="dd/mm/yyyy*"
+          app:errorContentDescription="This field is required"
+          app:helperText="Required">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+      </LinearLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvPhone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Phone Number*"
+
+        app:errorContentDescription="This field is required"
+
+        app:helperText="Required">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="phone"
+          android:maxLength="10"
+          android:maxLines="1" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvCity"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="City*"
+        app:errorContentDescription="This field is required"
+
+        app:helperText="Required">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:maxLines="1" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvOccupation"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Occupation*"
+        app:errorContentDescription="This field is required"
+        app:helperText="Required">
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:maxLines="1" />
+
+      </com.google.android.material.textfield.TextInputLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details_dropdown_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp">
+
+        <TextView
+          android:id="@+id/tv_additional_details"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Enter Additional Details"
+          android:textColor="@color/colorDarkBlue"
+          android:textSize="16sp"
+
+          android:textStyle="bold"
+          app:layout_constraintEnd_toStartOf="@id/iv_payment_dropdown"
+          app:layout_constraintHorizontal_chainStyle="packed"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+          android:id="@+id/iv_payment_dropdown"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="4dp"
+          android:layout_marginTop="2dp"
+          android:src="@drawable/dropdown_arrow"
+          app:layout_constraintBottom_toBottomOf="@id/tv_additional_details"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_chainStyle="packed"
+          app:layout_constraintStart_toEndOf="@id/tv_additional_details"
+          app:layout_constraintTop_toTopOf="@id/tv_additional_details" />
+
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <LinearLayout
+        android:id="@+id/ll_additional_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvFullAddress"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:hint="Full Address"
+          app:helperText="Optional">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvEducation"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:hint="Education"
+          app:helperText="Optional">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvBloodGroup"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:hint="Blood Group"
+          app:helperText="Optional">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvSecEmail"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:hint="Secondary Email"
+          app:helperText="Optional">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+          android:id="@+id/tvAddComments"
+          style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:hint="Additional Comments"
+          app:helperText="Optional">
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+      </LinearLayout>
+
+
+    </LinearLayout>
+  </ScrollView>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/colorGreyBg"
+    app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
+  <Button
+    android:id="@+id/btSubmit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="24dp"
+    android:text="@string/submit_form"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
