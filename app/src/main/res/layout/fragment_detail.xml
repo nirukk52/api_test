@@ -6,28 +6,30 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbarUp"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/colorPrimary"
+    app:layout_collapseMode="pin"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_chainStyle="packed"
+    app:title="@string/app_name"
+    app:titleTextColor="@color/colorWhiteBg" />
+
   <ScrollView
     android:id="@+id/scDetail"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     app:layout_constraintBottom_toTopOf="@id/jcplayer"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toBottomOf="@id/toolbarUp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-
-      <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarUp"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/colorPrimary"
-        app:layout_collapseMode="pin"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/colorWhiteBg" />
+      android:layout_height="match_parent">
 
       <TextView
+        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +40,6 @@
         android:padding="2dp"
         android:textColor="@android:color/black"
         android:textSize="32sp"
-        app:layout_constraintTop_toBottomOf="@id/toolbarUp"
         tools:text="@string/title" />
 
       <LinearLayout
@@ -79,17 +80,19 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/ivImage"
         app:layout_constraintTop_toBottomOf="@id/llTextSize" />
 
       <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@id/tvDate"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toBottomOf="@id/tvBody" />
 
 
@@ -124,10 +127,10 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/tvDate"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

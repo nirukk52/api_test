@@ -1,7 +1,6 @@
 package com.niranjan.android.laharisahitya.activity.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.appcompat.widget.Toolbar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
@@ -22,22 +19,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.niranjan.android.laharisahitya.R
+import com.niranjan.android.laharisahitya.Utils.*
 import com.niranjan.android.laharisahitya.activity.details.DetailsActivity
 import com.niranjan.android.laharisahitya.activity.home.Category
 import com.niranjan.android.laharisahitya.activity.login.LoginActivity
-import com.niranjan.android.laharisahitya.activity.upload.UploadActivity
-import com.niranjan.android.laharisahitya.activity.upload.UploadPostViewModel
-import com.niranjan.android.laharisahitya.model.Post
-import com.niranjan.android.laharisahitya.model.UserStatus
-import io.reactivex.disposables.Disposable
-import com.google.common.eventbus.EventBus
-import com.niranjan.android.laharisahitya.Utils.*
 import com.niranjan.android.laharisahitya.activity.upload.UploadFolderFragment
 import com.niranjan.android.laharisahitya.activity.upload.UploadPostFragment
-import com.niranjan.android.laharisahitya.model.Folder
+import com.niranjan.android.laharisahitya.activity.upload.UploadPostViewModel
+import com.niranjan.android.laharisahitya.model.Post
 import com.niranjan.android.laharisahitya.model.PostType
-import kotlinx.android.synthetic.main.activity_post.*
-import org.koin.android.ext.android.get
+import com.niranjan.android.laharisahitya.model.UserStatus
+import io.reactivex.disposables.Disposable
 
 
 /**
@@ -88,8 +80,8 @@ class ListFragment : Fragment() {
 
 
         if (FirebaseAuth.getInstance().currentUser?.uid != null
-                && SharedPrefsUtils.getStringPreference(context!!, AppConstants.ID) != null) {
-            if (SharedPrefsUtils.getStringPreference(context!!, AppConstants.USER_STATUS)!!.equals(UserStatus.ADMIN.name)) {
+            && SharedPrefsUtils.getStringPreference(requireContext(), AppConstants.ID) != null) {
+            if (SharedPrefsUtils.getStringPreference(requireContext(), AppConstants.USER_STATUS)!!.equals(UserStatus.ADMIN.name)) {
                 btUploadFile.visibility = View.VISIBLE
                 if (!category.type.equals(PostType.FOLDER)) {
                     //btUploadFolder.visibility = View.VISIBLE
@@ -98,7 +90,7 @@ class ListFragment : Fragment() {
         }
 
         btUploadFile.setOnClickListener {
-            if (isAdmin(context!!)) {
+            if (isAdmin(requireContext())) {
                 val ft = activity?.supportFragmentManager!!.beginTransaction()
                 val uploadPostFragment = UploadPostFragment.newInstance(category)
                 if (fragmentManager?.findFragmentByTag(UploadPostFragment.TAG) != null) {
@@ -108,14 +100,14 @@ class ListFragment : Fragment() {
                 ft.replace(containerFragList.id, uploadPostFragment, UploadPostFragment.TAG)
                 ft.commit()
             } else {
-                startActivity(LoginActivity.newIntent(context!!))
+                startActivity(LoginActivity.newIntent(requireContext()))
             }
         }
 
 
         lateinit var uploadFolderFragment: UploadFolderFragment
         btUploadFolder.setOnClickListener {
-            if (isAdmin(context!!)) {
+            if (isAdmin(requireContext())) {
                 uploadFolderFragment = UploadFolderFragment.newInstance(category)
                 val ft = activity?.supportFragmentManager!!.beginTransaction()
                 if (fragmentManager?.findFragmentByTag(UploadFolderFragment.TAG) != null) {
@@ -125,30 +117,30 @@ class ListFragment : Fragment() {
                 uploadFolderFragment.show(ft, category.title)
 
             } else {
-                startActivity(LoginActivity.newIntent(context!!))
+                startActivity(LoginActivity.newIntent(requireContext()))
             }
         }
 
-        postViewModel.folderToAdd.observe(this, androidx.lifecycle.Observer { Post ->
+        postViewModel.folderToAdd.observe(this, { Post ->
             initAdapter()
             uploadFolderFragment.dismiss()
         })
 
-        postViewModel.postToAdd.observe(this, androidx.lifecycle.Observer { Post ->
+        postViewModel.postToAdd.observe(this, { Post ->
             adapter.retry()
-            showToast(context!!, "Upload is successful!")
+            showToast(requireContext(), "Upload is successful!")
             if (fragmentManager?.findFragmentByTag(UploadPostFragment.TAG) != null) {
                 activity?.supportFragmentManager?.beginTransaction()
-                        ?.remove(fragmentManager?.findFragmentByTag(UploadPostFragment.TAG)!!)?.commit()
+                    ?.remove(fragmentManager?.findFragmentByTag(UploadPostFragment.TAG)!!)?.commit()
             }
         })
 
-        postViewModel.subPostToAdd.observe(this, androidx.lifecycle.Observer { Post ->
+        postViewModel.subPostToAdd.observe(this, { Post ->
             adapter.retry()
-            showToast(context!!, "Upload is successful!")
+            showToast(requireContext(), "Upload is successful!")
             if (fragmentManager?.findFragmentByTag(UploadPostFragment.TAG) != null) {
                 activity?.supportFragmentManager?.beginTransaction()
-                        ?.remove(fragmentManager?.findFragmentByTag(UploadPostFragment.TAG)!!)?.commit()
+                    ?.remove(fragmentManager?.findFragmentByTag(UploadPostFragment.TAG)!!)?.commit()
             }
         })
 
@@ -158,38 +150,36 @@ class ListFragment : Fragment() {
 
     private fun initAdapter() {
         val firstQuery =
-                if (category.isSubCategory) {
-                    if (isAdmin(context!!)) {
-                        firestore.collection(category.parentType.toString())
-                                .document(category.post.id).collection(category.title)
-                                .whereEqualTo("postType", category.parentType.name)
-                    } else {
-                        firestore.collection(category.parentType.toString())
-                                .document(category.post.id).collection(category.title)
-                                .whereEqualTo("postType", category.parentType.name)
-                    }
-                } else {
-                    if (isAdmin(context!!)) {
-                        firestore.collection(category.type.toString())
-                                .orderBy("folder", Query.Direction.DESCENDING)
-                                .orderBy("title", Query.Direction.ASCENDING)
-                    } else {
-                        firestore.collection(category.type.toString())
-                                .orderBy("title", Query.Direction.ASCENDING)
-                                .orderBy("folder", Query.Direction.DESCENDING)
-                                .whereEqualTo("postStatus", UserStatus.ADMIN.name)
-                    }
-                }
+//                if (category.isSubCategory) {
+//                    if (isAdmin(requireContext())) {
+//                        firestore.collection(category.parentType.toString())
+//                            .document(category.post.id).collection(category.title)
+//                            .whereEqualTo("postType", category.parentType.name)
+//                    } else {
+//                        firestore.collection(category.parentType.toString())
+//                            .document(category.post.id).collection(category.title)
+//                            .whereEqualTo("postType", category.parentType.name)
+//                    }
+//                } else {
+//            if (isAdmin(requireContext())) {
+            firestore.collection(category.type.toString())
+                .orderBy("title", Query.Direction.ASCENDING)
+//            } else {
+//                firestore.collection(category.type.toString())
+//                    .orderBy("title", Query.Direction.ASCENDING)
+//                    .whereEqualTo("postStatus", UserStatus.ADMIN.name)
+//            }
+//                }
 
         val config = PagedList.Config.Builder()
-                .setEnablePlaceholders(false)
-                .setPrefetchDistance(10)
-                .setPageSize(20)
-                .build()
+            .setEnablePlaceholders(false)
+            .setPrefetchDistance(10)
+            .setPageSize(20)
+            .build()
 
         val options: FirestorePagingOptions<Post> = FirestorePagingOptions.Builder<Post>()
-                .setLifecycleOwner(this as LifecycleOwner)
-                .setQuery(firstQuery, config, Post::class.java)
+            .setLifecycleOwner(this as LifecycleOwner)
+            .setQuery(firstQuery, config, Post::class.java)
                 .build()
 
         adapter = PostListAdapter(options)
@@ -230,7 +220,7 @@ class ListFragment : Fragment() {
                         val category = Category(it.title, ""
                                 , this.category.parentType, this.category.parentType, false, it)
 
-                        startActivity(DetailsActivity.newIntent(context!!, category, it.id))
+                        startActivity(DetailsActivity.newIntent(requireContext(), category, it.id))
                     }
                 }
     }
@@ -258,7 +248,7 @@ class ListFragment : Fragment() {
     private val authStateListener = FirebaseAuth.AuthStateListener { auth ->
         val loggedIn = auth.currentUser != null
         if (loggedIn) {
-            if (isAdmin(context!!)) {
+            if (isAdmin(requireContext())) {
 
             }
         } else {

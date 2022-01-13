@@ -29,7 +29,6 @@
 
     <activity
       android:name=".activity.SplashActivity"
-      android:theme="@style/Theme.App.Starting"
       android:noHistory="true"
       android:exported="true"
       >
@@ -49,6 +48,7 @@
 
     <service
       android:name=".Utils.NotificationService"
+      android:enabled="true"
       android:exported="false">
       <intent-filter>
         <action android:name="com.google.firebase.MESSAGING_EVENT" />
