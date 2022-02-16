@@ -88,7 +88,7 @@ class TextDetailFragment : Fragment() {
 
         tvDelete.setOnClickListener {
 
-            AlertDialog.Builder(context!!)
+            AlertDialog.Builder(requireContext())
                     .setTitle("  Delete  " + mPost.title + " ? ")
                     .setMessage("Are you sure you want to delete this entry?")
                     .setPositiveButton(android.R.string.yes) { dialog, which ->
@@ -96,13 +96,13 @@ class TextDetailFragment : Fragment() {
                                 .delete()
                                 .addOnSuccessListener {
                                     Log.d(TAG, "DocumentSnapshot successfully deleted!")
-                                    showToast(context!!, "Successfully Deleted!")
+                                    showToast(requireContext(), "Successfully Deleted!")
                                     activity?.finish()
 
                                 }
                                 .addOnFailureListener { e ->
                                     Log.w(TAG, "Error deleting document", e)
-                                    showToast(context!!, "Something went wrong!")
+                                    showToast(requireContext(), "Something went wrong!")
                                 }
                     }
                     .setNegativeButton(android.R.string.no, null)
@@ -127,7 +127,7 @@ class TextDetailFragment : Fragment() {
             tvBody.text = post.body
             tvDate.text = post.createdAt.toString()
 
-            if (isAdmin(context!!)) {
+            if (isAdmin(requireContext())) {
                 tvDelete.visibility = View.VISIBLE
             }
             if (post.mediaType.equals(MediaType.IMAGE)) {
@@ -144,7 +144,7 @@ class TextDetailFragment : Fragment() {
     }
 
     private fun displayImage(post: Post) {
-        Glide.with(ivImage.context).load(post.mediaUrl).placeholder(R.drawable.ic_loading).into(ivImage)
+        Glide.with(ivImage.context).load(post.mediaUrl).dontTransform().placeholder(R.drawable.ic_loading).into(ivImage)
 
         ivImage.setOnClickListener {
             fragmentManager?.beginTransaction()

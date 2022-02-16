@@ -11,15 +11,15 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         multiDexEnabled true
-        versionCode 3
-        versionName "0.1"
+        versionCode 5
+        versionName "5.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         release {
             keyAlias 'niranjan__key'
             keyPassword 'ranchordas'
-            storeFile file('/media/niranjan/1810A137752241A7/Files/keystore/niranjan_key.jks')
+            storeFile file('/Users/nkurambhatti/Documents/keys/ashram_key.jks')
             storePassword 'ranchordas'
         }
     }
@@ -78,6 +78,13 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.2.1'
     implementation 'com.firebaseui:firebase-ui-firestore:4.2.1'
 
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    // Declare the dependency for the Analytics library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
     implementation 'org.koin:koin-android:1.0.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.android.support:multidex:1.0.3'
@@ -88,13 +95,13 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.github.chrisbanes:PhotoView:2.1.3'
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
-    implementation 'com.github.jeancsanchez:JcPlayer:2.6.16'
+    implementation 'com.github.jeancsanchez:JcPlayer:2.7.0'
 //    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 //    implementation 'androidx.fragment:fragment-ktx:1.0.0'
 
-    implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
+//    implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
 
 }
 

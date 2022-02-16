@@ -29,8 +29,7 @@ class MyApplication : Application() {
 
         val firestore = FirebaseFirestore.getInstance()
         val settings = FirebaseFirestoreSettings.Builder()
-                .setTimestampsInSnapshotsEnabled(true)
-                .build()
+            .build()
         firestore.firestoreSettings = settings
     }
 

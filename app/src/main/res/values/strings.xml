@@ -21,7 +21,7 @@
     <string name="pothi">Pothi</string>
     <string name="chaliisa">Lahaari Chalisa</string>
     <string name="aarti">Aarti</string>
-    <string name="recording">Pravachan recording</string>
+    <string name="recording">Recordings</string>
     <string name="login">LOGIN / लॉग इन करें</string>
     <string name="add_folder">Add Folder / *** ** ***</string>
 
@@ -54,6 +54,8 @@
 
     <string name="track_stocks">Track Two Stocks</string>
     <string name="track_stocks_rv">Track Stocks with RecyclerView</string>
-    <string name="dialog_text">Complete Registration</string>
-  <string name="supporting_text">Complete the registration form to get access to FREE Lahari Pothi, Bhajans, Arti and more!</string>
+    <string name="dialog_text">Register Yourself…</string>
+    <string name="supporting_text">Complete the registration form to get access to FREE Lahari Pothi, Bhajans, Arti and more!</string>
+    <string name="default_notification_channel_id">All Notifications</string>
+    <string name="fcm_message">Kamtha Ashram Notification</string>
 </resources>
